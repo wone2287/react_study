@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component, Fragment } from 'react';
+import PhoneComponent from './PhoneComponent';
 import './App.css';
 
 class App extends Component {
   render(){
     return (
-      <h3>test react</h3>
+      <Fragment>
+        <h3>test react</h3>
+        <PhoneComponent/>
+      </Fragment>
     )
   }
 }
