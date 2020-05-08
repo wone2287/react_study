@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PhoneComponent from './PhoneComponent';
-import PhoneInfo from './PhoneInfo';
+import PhoneInfoList from './PhoneInfoList';
 import './App.css';
 
 class App extends Component {
@@ -18,7 +18,15 @@ class App extends Component {
 
     this.setState({
       'information' : information.concat({id : this.id++, ...data})
-    })
+    });
+  }
+
+  handleDelete = (id) => {
+    const { information } = this.state;
+
+    this.setState({
+      'information' : information.filter(data => data.id != id)
+    });
   }
 
   render(){
@@ -28,11 +36,7 @@ class App extends Component {
       <Fragment>
         <h3>test react</h3>
         <PhoneComponent onCreate={this.handleCreate}/>
-<<<<<<< HEAD
-        <PhoneInfo info={{id : '1', name : 'heo', phone : '012300'}}/>
-=======
-        {JSON.stringify(information)} 
->>>>>>> 7e26c34b1685fddeed75c40326f6a5b99685a929
+        <PhoneInfoList data={information} onDelete={this.handleDelete}/>
       </Fragment>
     )
   }

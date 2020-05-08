@@ -15,10 +15,12 @@ class PhoneComponent extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.onCreate(this.state);
+        /*
         this.setState({
             name : '',
             phone : ''
         })
+        */
     }
 
     render(){
