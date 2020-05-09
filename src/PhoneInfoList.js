@@ -7,9 +7,9 @@ class PhoneInfoList extends Component {
     }
 
     render(){
-        const { data, onDelete } = this.props;
+        const { data, onDelete, onUpdate } = this.props;
         const list = data.map(
-            info => (<PhoneInfo key={info.id} info={info} remove={onDelete}/>)
+            info => (<PhoneInfo key={info.id} info={info} remove={onDelete} update={onUpdate}/>)
             ); // 메소드 호출
 
         return (

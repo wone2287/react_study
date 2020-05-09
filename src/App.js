@@ -25,8 +25,20 @@ class App extends Component {
     const { information } = this.state;
 
     this.setState({
-      'information' : information.filter(data => data.id != id)
+      'information' : information.filter(data => data.id !== id)
     });
+  }
+
+  handleUpdate = (id, data) => {
+    const { information } = this.state;
+
+    this.setState({
+      'information' : information.map(
+        item => item.id === id 
+        ? { ...item, ...data}
+        : item
+      )
+    })
   }
 
   render(){
@@ -35,8 +47,14 @@ class App extends Component {
     return (
       <Fragment>
         <h3>test react</h3>
-        <PhoneComponent onCreate={this.handleCreate}/>
-        <PhoneInfoList data={information} onDelete={this.handleDelete}/>
+        <PhoneComponent 
+          onCreate={this.handleCreate}
+          />
+        <PhoneInfoList 
+          data={information} 
+          onDelete={this.handleDelete}
+          onUpdate={this.handleUpdate}
+          />
       </Fragment>
     )
   }
